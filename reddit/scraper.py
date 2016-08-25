@@ -35,7 +35,6 @@ hrefs = [link.get_attribute('href') for link in links if desired_url in link.get
 #	if desired_url in href:
 #		hrefs.append(href)
 
-
 # Going to the href of where each image is and saving it.
 for (i, source) in enumerate(hrefs):
 	driver.get(source)
