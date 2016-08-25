@@ -26,11 +26,15 @@ imagelist = driver.find_element_by_id('imagelist') # Div of images
 links = imagelist.find_elements_by_tag_name('a') # Each link of post
 
 # Collecting hrefs. 
-hrefs = []
-for link in links:
-	href = link.get_attribute("href")
-	if desired_url in href:
-		hrefs.append(href)
+hrefs = [link.get_attribute('href') for link in links if desired_url in link.get_attribute('href')]
+# hrefs = [href for href in link.get_attribute("href") if desired_url in href for link in links] didn't work
+# For every for loop involving lists, there is a list comprehension for it.
+#hrefs = []
+#for link in links:
+#	href = link.get_attribute("href")
+#	if desired_url in href:
+#		hrefs.append(href)
+
 
 # Going to the href of where each image is and saving it.
 for (i, source) in enumerate(hrefs):
