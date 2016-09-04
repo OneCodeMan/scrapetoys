@@ -9,12 +9,13 @@ def extract_record_string(article):
 	separate_record = full_record.split('-')
 	return separate_record # ('12', '1', '0')
 
-driver = webdriver.Firefox()
 START_URL = "http://m.ufc.ca/fighter/"
-fighter_one = "Ronda Rousey".replace(' ', '-') #input("Enter a fighter's full name.")
-fighter_two = "Chad Mendes".replace(' ', '-') #input("Enter another fighter's full name.")
+fighter_one = input("Enter a fighter's full name: ").replace(' ', '-') 
+fighter_two = input("Enter a fighter's full name: ").replace(' ', '-')
+driver = webdriver.Firefox()
 
 def get_record(fighter):
+	print("Collecting data.. please wait.")
 	driver.get(START_URL+fighter)
 	article = driver.find_element_by_class_name("fighter-profile")
 	record = extract_record_string(article)
